@@ -52,7 +52,7 @@
 }
 
 .navitem a:hover{
-    color: #FF4040;
+    color: #ccc;
     transform: translateY(-1.5px);
 }
 
@@ -772,4 +772,67 @@
     .contact-item {
         justify-content: center;
     }
+}
+
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-icon {
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.username-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    display: none;
+    margin-top: 5px;
+    min-width: 150px;
+}
+
+/* Restore the hover functionality */
+.profile-container:hover .username-tooltip {
+    display: block;
+}
+
+.tooltip-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-btn {
+    background-color: #FF4040;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #cc3333;
+}
+
+.username-display {
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: center;
 }
