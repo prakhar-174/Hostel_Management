@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         profileContainer.className = 'profile-container';
         
         const profileIcon = document.createElement('a');
-        profileIcon.innerHTML = '<i class="fas fa-user-circle"></i>';
+        profileIcon.innerHTML = '<i class="fa-regular fa-user"></i>';
         profileIcon.className = 'profile-icon';
         
         const usernameTooltip = document.createElement('span');
