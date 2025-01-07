@@ -41,46 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const loggedInUser = localStorage.getItem('loggedInUser');
 
     if (loggedInUser) {
-        // Create profile icon and container
         const profileContainer = document.createElement('div');
         profileContainer.className = 'profile-container';
         
         const profileIcon = document.createElement('a');
         profileIcon.innerHTML = '<i class="fa-regular fa-user"></i>';
         profileIcon.className = 'profile-icon';
-        
-        const usernameTooltip = document.createElement('span');
-        usernameTooltip.className = 'username-tooltip';
-        
-        // Create tooltip content container
-        const tooltipContent = document.createElement('div');
-        tooltipContent.className = 'tooltip-content';
-        
-        // Add username display
-        const usernameDisplay = document.createElement('div');
-        usernameDisplay.className = 'username-display';
-        usernameDisplay.textContent = loggedInUser;
-        
-        // Add logout button
-        const logoutBtn = document.createElement('button');
-        logoutBtn.className = 'logout-btn';
-        logoutBtn.textContent = 'Logout';
-        
-        // Add logout functionality
-        logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('loggedInUser');
-            window.location.href = 'login.html';
-        });
-        
-        // Assemble the tooltip
-        tooltipContent.appendChild(usernameDisplay);
-        tooltipContent.appendChild(logoutBtn);
-        usernameTooltip.appendChild(tooltipContent);
+        profileIcon.href = 'profile.html';
         
         profileContainer.appendChild(profileIcon);
-        profileContainer.appendChild(usernameTooltip);
-        
-        // Replace login link with profile icon
         loginLink.parentNode.replaceChild(profileContainer, loginLink);
     }
 });
