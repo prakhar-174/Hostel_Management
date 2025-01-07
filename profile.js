@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display student ID
     document.getElementById('student-id').textContent = loggedInUser;
 
+    // Define editable fields
+    const editableFields = ['student-mobile', 'email', 'room'];
+
+    // Make non-editable fields readonly
+    document.querySelectorAll('.form-group input').forEach(input => {
+        if (!editableFields.includes(input.id)) {
+            input.setAttribute('readonly', true);
+            input.classList.add('readonly');
+        }
+    });
+
     // Navigation functionality
     const navLinks = document.querySelectorAll('.profile-nav a');
     const sections = document.querySelectorAll('.main-content section');
@@ -37,10 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     });
 
-    // Form submission handlers
+    // Personal info form submission
     document.getElementById('personal-info-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        // Add functionality to save personal info
+        
+        // Get editable field values
+        const updatedInfo = {
+            studentMobile: document.getElementById('student-mobile').value,
+            email: document.getElementById('email').value,
+            room: document.getElementById('room').value
+        };
+
+        // Here you would typically send this data to a server
+        // For now, we'll just show a success message
         alert('Personal information updated successfully!');
     });
 
