@@ -79,4 +79,98 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add functionality to load different history content
         });
     });
+
+    // Update history section
+    function updateHistory() {
+        const historyContent = document.querySelector('.history-content');
+        if (!historyContent) return;
+
+        const history = JSON.parse(localStorage.getItem('userHistory') || '[]');
+        
+        // Function to show content based on tab
+        function showTabContent(tabType) {
+            // Convert tab type to match history item type
+            let type;
+            switch(tabType) {
+                case 'complaints':
+                    type = 'Complaint';
+                    break;
+                case 'leave':
+                    type = 'Leave';
+                    break;
+                case 'feedback':
+                    type = 'Feedback';
+                    break;
+                default:
+                    type = tabType;
+            }
+
+            const items = history.filter(item => item.type === type);
+            
+            if (items.length === 0) {
+                historyContent.innerHTML = '<p class="no-history">No history available</p>';
+                return;
+            }
+
+            historyContent.innerHTML = items.map(item => `
+                <div class="history-item">
+                    <div class="history-date">${item.date}</div>
+                    <div class="history-description">${item.description}</div>
+                </div>
+            `).join('');
+        }
+
+        // Add tab click handlers
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                // Show content for selected tab
+                showTabContent(btn.dataset.tab);
+            });
+        });
+
+        // Show complaints by default
+        const defaultTab = document.querySelector('.tab-btn[data-tab="complaints"]');
+        if (defaultTab) {
+            defaultTab.classList.add('active');
+            showTabContent('complaints');
+        }
+    }
+
+    // Call updateHistory when the history section is shown
+    document.querySelector('a[href="#history"]')?.addEventListener('click', updateHistory);
+
+    // Also update history immediately if we're on the history section
+    if (window.location.hash === '#history') {
+        updateHistory();
+    }
+
+    // Add some styling for the history items
+    const style = document.createElement('style');
+    style.textContent = `
+        .history-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .history-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .history-description {
+            color: #333;
+        }
+        .no-history {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+    `;
+    document.head.appendChild(style);
 });

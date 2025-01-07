@@ -1,3 +1,36 @@
+// Add this function at the beginning of script.js
+function checkLoginStatus(event, targetPage) {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (!loggedInUser) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Access Denied',
+            text: 'Please login to access this feature',
+            icon: 'warning',
+            confirmButtonText: 'Login',
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'login.html';
+            }
+        });
+        return false;
+    }
+    window.location.href = targetPage;
+    return true;
+}
+
+// Add this event listener
+document.addEventListener('DOMContentLoaded', function() {
+    const complaintsLink = document.querySelector('a[href="complaints.html"]');
+    if (complaintsLink) {
+        complaintsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkLoginStatus(e, 'complaints.html');
+        });
+    }
+});
+
 // Add this at the beginning of your script file
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {

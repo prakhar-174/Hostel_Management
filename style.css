@@ -918,8 +918,7 @@
     background: var(--secondary);
 }
 
-/* Add/update styles for profile dropdown */
-.profile-dropdown {
+/* .profile-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
@@ -931,13 +930,13 @@
     z-index: 1002;
 }
 
-/* Update banner z-index */
+
 .banner {
     position: relative;
     z-index: 1;
 }
 
-/* Ensure dropdown items are visible */
+
 .profile-dropdown a {
     color: var(--pixel-gray);
     padding: 8px 15px;
@@ -951,4 +950,4 @@
 .profile-dropdown a:hover {
     background-color: var(--pixel-light);
     border-radius: 4px;
-}
+} */

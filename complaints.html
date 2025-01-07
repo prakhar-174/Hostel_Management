@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints & Queries Dashboard</title>
+    <link rel="stylesheet" href="complaints-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="user-name">Prakhar Tiwari</span>
+                <span id="user-id">2023B0121164</span>
+            </div>
+            <nav class="dashboard-nav">
+                <a href="#dashboard" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#complaints"><i class="fas fa-exclamation-circle"></i> Complaints</a>
+                <a href="#feedback"><i class="fas fa-comment"></i> Feedback</a>
+                <a href="#leave"><i class="fas fa-calendar-alt"></i> Leave Management</a>
+                <a href="#facilities"><i class="fas fa-building"></i> Facilities</a>
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="active-section">
+                <h2>Dashboard</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Active Complaints</h3>
+                        <p>2</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Pending Leaves</h3>
+                        <p>1</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-comment"></i>
+                        <h3>Recent Feedback</h3>
+                        <p>3</p>
+                    </div>
+                </div>
+                <div class="notifications">
+                    <h3>Recent Notifications</h3>
+                    <div class="notification-list">
+                        <!-- Notifications will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complaints Section -->
+            <section id="complaints" class="hidden">
+                <h2>Complaints Management</h2>
+                <button class="new-complaint-btn">New Complaint</button>
+                
+                <div class="complaint-form hidden">
+                    <h3>Submit New Complaint</h3>
+                    <form id="complaint-form">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select required>
+                                <option value="">Select Category</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="facilities">Facilities</option>
+                                <option value="mess">Mess</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Urgency Level</label>
+                            <select required>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Attachment</label>
+                            <input type="file">
+                        </div>
+                        <button type="submit">Submit Complaint</button>
+                    </form>
+                </div>
+
+                <div class="complaints-list">
+                    <!-- Complaints will be listed here -->
+                </div>
+            </section>
+
+            <!-- Leave Management Section -->
+            <section id="leave" class="hidden">
+                <h2>Leave Management</h2>
+                <button class="new-leave-btn">Request Leave</button>
+
+                <div class="leave-form hidden">
+                    <h3>Submit Leave Request</h3>
+                    <form id="leave-form">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Reason</label>
+                            <textarea required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Supporting Document</label>
+                            <input type="file">
+                        </div>
+                        <button type="submit">Submit Request</button>
+                    </form>
+                </div>
+
+                <div class="leave-list">
+                    <!-- Leave requests will be listed here -->
+                </div>
+            </section>
+
+            <!-- Other sections... -->
+        </div>
+    </div>
+    <script src="complaints.js"></script>
+</body>
+</html>
